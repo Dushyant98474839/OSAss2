@@ -1,1 +1,22 @@
+Module Programming has been done in this code to print the number of currently running processes in task_struct.
 
+Module Details are as follows:
+
+Module_license=GPL
+Module_Name=Dushyant
+Module_description=ASS2
+
+The code includes kernel.h and module.h header files in order to write a module code. linux/sched/signal.h is used for tast_struct.
+
+There are two functions display_init and display_cleaup, which serves as module entry points and exit points respectively. 
+
+Within display_init fucntion, tast_struct is used to get info about the the state of a processes. A pointer is set of type task_struct which haasn't been initialised since for_each_process(pointername) does it itseld. for_each_process(pointername) is used to go through all the processes. An if block is there to check the status of running task. If its true then counter value increases by 1. The count is displayed and function returns 0 which is ignored. This function is called while module loading.
+
+
+display_cleanup is the exit point of module called while module unloading.
+
+module_init and module_exit are macros.
+
+A Makefile is also made for the same.
+
+To use this module, fir build it using make, then load it into kernel using insmod modulename. dmesg is used to view the kernel log file and lastly rmmod can be used to remove the module. 
